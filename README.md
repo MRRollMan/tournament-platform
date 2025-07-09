@@ -48,12 +48,35 @@ environment:
     - EMAIL_HOST_PASSWORD=abcd efgh
     - EMAIL_PORT=587
 ```
-⚠️ Don't forget to update the backend URL in the file frontend/src/constants.js as well.
+> ⚠️ Don't forget to update the backend URL in the file "frontend/src/constants.js".
 
-3. Build and run
+### 3. Build and run
 
 ```bash
 docker-compose up --build
 ```
 
 The backend will run at http://127.0.0.1:8000, and the frontend at http://localhost:5173
+
+
+## Screenshots
+
+### 🏠 Home Page
+
+Displays upcoming tournaments, news, and quick navigation.
+
+![Home Page](https://github.com/user-attachments/assets/f3b0f434-37ff-4874-9f15-ed566b93ae04)
+
+### 🏆 Tournament Page
+
+Detailed view of a tournament, including brackets and participants.
+
+![Tournament Page](https://github.com/user-attachments/assets/de3a02ce-c4e0-45fc-8b3d-6e076382d557)
+
+### 👥 Team Page
+
+Team profile with player roster and match history.
+
+![Team Page](https://github.com/user-attachments/assets/29416692-a492-42c8-91e6-d7820d880091)
+
+> ⚠️ The data shown in these screenshots is fictional and does not reflect real events. 
