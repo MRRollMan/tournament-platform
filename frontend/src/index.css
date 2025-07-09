@@ -1,0 +1,40 @@
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+
+  --dark-background-color: #242424;
+  --primary: #6c5ce7;
+  --primary-dark: #1a2a6c;
+  --primary-red: #b21f1f;
+  --secondary-dark: #16235a;
+  --secondary-red: #9e1c1c;
+  --faded: #666;
+  --secondary: #00b894;
+  --danger: #e74c3c;
+  --danger-darker: #dc3545;
+  --warning: #f39c12;
+  --info: #3498db;
+  --dark: #1e1e2e;
+  --darker: #13131d;
+  --light: #f5f6fa;
+  --card-bg: #2d2d39;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --border-radius: 12px;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before{
+  box-sizing: inherit;
+}
+
+body{
+  background-color: var(--light);
+  margin: 0px;
+}

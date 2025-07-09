@@ -1,0 +1,129 @@
+
+
+.matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.tournament-match-item {
+    background: var(--darker);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.tournament-match-item:hover {
+    cursor: pointer;
+    background: var(--dark);
+}
+
+.tournament-match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    margin: 0 20px;
+}
+
+.tournament-match-teams .tournament-team-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.vs {
+    position: absolute;
+    left: 50%;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+}
+
+.vs::before,
+.vs::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.match-winner-left::before,
+.match-winner-left::after,
+.match-winner-right::before,
+.match-winner-right::after {
+    position: absolute;
+    top: 0%;
+    background: none;
+    width: auto;
+}
+
+.match-winner-left::before,
+.match-winner-right::after {
+    color: var(--secondary);
+    content: "WIN";
+}
+.match-winner-right::before,
+.match-winner-left::after {
+    color: var(--danger);
+    content: "LOSE";
+}
+
+.tournament-team-name {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+  
+  
+  .vs::before {
+    right: 100%;
+    margin-right: 30px;
+  }
+  
+  .vs::after {
+    left: 100%;
+    margin-left: 30px;
+  }
+
+.match-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.match-time svg {
+    color: var(--primary);
+}
+
+.match-status {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    .tournament-match-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .tournament-match-teams {
+        margin: 15px 0;
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+    .vs {
+        position: unset;
+    }
+}

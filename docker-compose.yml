@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    restart: always
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=ABCDEFG
+      - DATABASE_URL=db.sqlite3
+      - BACKEND_URL=http://127.0.0.1:8000 # Also, set the link in the file "frontend\src\constants.js"
+      - FRONTEND_URL=http://localhost:5173
+      - EMAIL_HOST=smtp.mail.com
+      - EMAIL_HOST_USER=user@mail.com
+      - EMAIL_HOST_PASSWORD=abcd efgh
+      - EMAIL_PORT=587
+
+  frontend:
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    
