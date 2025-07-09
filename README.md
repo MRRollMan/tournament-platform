@@ -75,7 +75,7 @@ Detailed view of a tournament, including brackets and participants.
 
 ### 👥 Team Page
 
-Team profile with player roster and match history.
+Team profile with match history.
 
 ![Team Page](https://github.com/user-attachments/assets/29416692-a492-42c8-91e6-d7820d880091)
 
