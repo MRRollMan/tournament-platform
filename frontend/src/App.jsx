@@ -33,13 +33,13 @@ export default function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/password-reset/confirm" element={<PasswordResetConfirm />} />
+              <Route path="/tournaments" element={<TournamentsList />} />
+              <Route path="/matches" element={<MatchesList />} />
+              <Route path="/teams" element={<TeamsList />} />
+              <Route path="/tournaments/:id" element={<Tournament />} />
+              <Route path="/teams/:id" element={<Team />} />
+              <Route path="/matches/:id" element={<Match />} />
               <Route element={<PrivateRoute />}>
-                <Route path="/tournaments" element={<TournamentsList />} />
-                <Route path="/matches" element={<MatchesList />} />
-                <Route path="/teams" element={<TeamsList />} />
-                <Route path="/tournaments/:id" element={<Tournament />} />
-                <Route path="/teams/:id" element={<Team />} />
-                <Route path="/matches/:id" element={<Match />} />
                 <Route path="/create/team/" element={<CreateTeam />} />
                 <Route path="/create/tournament/" element={<CreateTournament />} />
                 <Route path="/edit/tournament/:tournamentId" element={<EditTournament />} />

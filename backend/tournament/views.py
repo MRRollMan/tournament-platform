@@ -1,4 +1,6 @@
 from datetime import datetime
+from email.policy import default
+
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from rest_framework import generics, permissions, status
@@ -22,6 +24,8 @@ from tournament.permissions import IsOrganizer, RolePermission, IsCaptain
 
 if settings.DEBUG:
     pass #permissions.IsAuthenticated = permissions.AllowAny
+
+default_safe_permission = permissions.AllowAny
 
 User = get_user_model()
 
@@ -75,13 +79,13 @@ class TournamentListCreateView(RolePermission, generics.ListCreateAPIView):
 class TournamentDetailView(RolePermission, generics.RetrieveUpdateDestroyAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentDetailSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsOrganizer()]
 
 
 class JoinTournamentsView(RolePermission, generics.CreateAPIView):
     serializer_class = TournamentDetailSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsCaptain()]
 
     def post(self, request: Request, *args, **kwargs):
@@ -130,7 +134,7 @@ class JoinTournamentsView(RolePermission, generics.CreateAPIView):
 class MakeTournamentsMatchesView(RolePermission, generics.RetrieveAPIView):
     queryset = Tournament.objects.all()
     serializer_class = TournamentDetailSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsOrganizer()]
 
     def post(self, request: Request, *args, **kwargs):
@@ -171,13 +175,13 @@ class MakeTournamentsMatchesView(RolePermission, generics.RetrieveAPIView):
 class TeamView(RolePermission, generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsCaptain()]
 
 
 class CaptainTeamsView(RolePermission, generics.ListAPIView):
     serializer_class = TeamSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsCaptain()]
 
     def get_queryset(self):
@@ -188,7 +192,7 @@ class CaptainTeamsView(RolePermission, generics.ListAPIView):
 class TeamDetailView(RolePermission, generics.RetrieveAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamDetailSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsCaptain()]
 
 
@@ -198,7 +202,7 @@ class MatchListCreateView(RolePermission, generics.ListCreateAPIView):
         "-status", "-match_time"
     )
     serializer_class = MatchSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsOrganizer()]
     
     def get_object(self):
@@ -214,7 +218,7 @@ class MatchListCreateView(RolePermission, generics.ListCreateAPIView):
 class MatchDetailView(RolePermission, generics.RetrieveUpdateAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchDetailSerializer
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsOrganizer()]
 
 
@@ -270,14 +274,14 @@ class MatchEndView(RolePermission, generics.CreateAPIView):
 class MatchResultListView(generics.ListAPIView):
     queryset = MatchResult.objects.all()
     serializer_class = MatchResultSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [default_safe_permission]
 
 
 class MatchResultDetailView(RolePermission, generics.RetrieveUpdateAPIView):
     queryset = MatchResult.objects.all()
     serializer_class = MatchResultSerializer
 
-    safe_permissions = [permissions.IsAuthenticated()]
+    safe_permissions = [default_safe_permission()]
     unsafe_permissions = [IsOrganizer()]
 
 

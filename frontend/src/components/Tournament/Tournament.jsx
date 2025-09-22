@@ -81,7 +81,7 @@ export default function Tournament() {
                 </div>
                 <div className="tournament-title">
                     <h1>{tournament.name}</h1>
-                    {tournament.organizer.id === user.data.id && (
+                    {user && tournament.organizer.id === user.data.id && (
                         <Link to={`/edit/tournament/${id}`} className="tournament-btn edit-tournament-btn">
                             <span> Edit Tournament</span>
                         </Link>

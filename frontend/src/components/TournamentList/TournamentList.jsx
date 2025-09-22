@@ -56,13 +56,12 @@ export default function TournamentsList() {
     return <Loading text="Loading tournaments..."/>;
   
   if (error) return <Error error={error}/>
-  console.log(user.data.role)
 
   return (
     <div className="tournaments-container">
       <div className="tournaments-header">
         <h2 className="subtitle">Tournaments
-        {user.data.role === "organizer" && (
+        {user && user.data.role === "organizer" && (
           <Link to="/create/tournament/" className="create-tournament">
             Create Tournament
           </Link>
